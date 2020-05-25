@@ -1,0 +1,10 @@
+.form {
+  display: none;
+}
+.name {
+  display: none;
+}
+
+.showing {
+  display: block;
+}

@@ -11,9 +11,19 @@ function paintName(text) {
   name.innerText = `Hello ${text}`;
 }
 
+function handleSubmit(event) {
+  const currentValue = input.value; 
+
+  event.preventDefault(); //submit 이벤트가 발생할때 default한다
+  paintName(currentValue); //submit 이벤트 발생 하였을때 input.value를 pait한다
+} //submit 관리
+
 function askForName() {
   form.classList.add(SHOWING_CN);
-} //스토로지에서 currentUser가 없을때 SHOWING_CN추가 하여 물어보기
+  form.addEventListener('submit',handleSubmit);
+
+} //스토로지에서 currentUser가 없을때 SHOWING_CN 추가 하여 물어보기
+
 
 function localStorge() {
   const currentUser = localStorage.getItem(USER_LS);

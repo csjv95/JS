@@ -11,16 +11,19 @@ function paintName(text) {
   name.innerText = `Hello ${text}`;
 }
 
+function askForName() {
+  form.classList.add(SHOWING_CN);
+} //스토로지에서 currentUser가 없을때 SHOWING_CN추가 하여 물어보기
+
 function localStorge() {
   const currentUser = localStorage.getItem(USER_LS);
 
   if(currentUser === null) {
-    // 없을때
+    askForName(); //없을때
   }else {
     paintName(currentUser); //있을때
   }
-} 
-// 로컬 스트로지에서 값을 받아오기
+} // 로컬 스트로지에서 값을 받아오기
 
 function init() {
   localStorge();

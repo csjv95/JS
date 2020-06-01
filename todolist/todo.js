@@ -4,13 +4,20 @@ const toDoList = document.querySelector('.js-toDoList');
 
 const TODOS_LS = 'toDos';
 
-const toDos = []; // to dos
+let toDos = []; // to dos
 
 // click delete button 
 function deleteToDo(event) {
   const btn = event.target; //이벤트 발생한 것
   const li = btn.parentNode; // 리스트를 지워야 되니깐 부모를 찾아서
   toDoList.removeChild(li); // li 제거하기
+
+  // local storage 에서도 지우기
+  const cleanToDos = toDos.filter(function(toDo){
+    return toDo.id !==  parseInt(li.id); // 타입이 같지 않아서 int로 바꿔준다 
+  });
+  toDos = cleanToDos; // const -> let(toDos) todos에 바뀐 cleanToDos를 넣는다 
+  saveToDos(); // save
 }
 
 // save toDos

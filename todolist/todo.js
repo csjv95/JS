@@ -6,6 +6,13 @@ const TODOS_LS = 'toDos';
 
 const toDos = []; // to dos
 
+// click delete button 
+function deleteToDo(event) {
+  const btn = event.target; //이벤트 발생한 것
+  const li = btn.parentNode; // 리스트를 지워야 되니깐 부모를 찾아서
+  toDoList.removeChild(li); // li 제거하기
+}
+
 // save toDos
 function saveToDos() {
   localStorage.setItem(TODOS_LS, JSON.stringify(toDos)); // setItem(keyName , keyValue),JSON을 사용해서 object를 string으로 바꿔준다
@@ -19,6 +26,7 @@ function paintToDo(text) {
   const newId = toDos.length + 1; // id값은 length에 +1
 
   delBtn.innerText ='x';
+  delBtn.addEventListener('click',deleteToDo);  // 이벤트 리스너 만들기 for delete button 
   span.innerText = text;
   
   li.appendChild(span);
